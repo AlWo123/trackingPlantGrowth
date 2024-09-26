@@ -2,7 +2,7 @@ import cv2 as cv
 import sys 
 import xlsxwriter
 from PIL import Image
-import easyocr
+# import easyocr
 import os
 import pandas as pd 
 from glob import glob
@@ -17,8 +17,8 @@ def debugging_shit():
     print("TIME: ", img_date_time[-1])
 
     # Getting text from image 
-    sample_name = get_sample_name(img_path)
-    print("SAMPLE NAME:", sample_name)
+    # sample_name = get_sample_name(img_path)
+    # print("SAMPLE NAME:", sample_name)
 
     img = cv.imread(cv.samples.findFile(img_path))
 
@@ -109,11 +109,11 @@ def get_date_taken(image_path):
         raise Exception("Image {0} does not have EXIF data.".format(image_path))
     return exif[36867]
 
-def get_sample_name(image_path):
-    # Image Preprocessing 
-    reader = easyocr.Reader(['en'])
-    output_array = reader.readtext(image_path, detail=0)
-    return output_array[-1]
+# def get_sample_name(image_path):
+#     # Image Preprocessing 
+#     reader = easyocr.Reader(['en'])
+#     output_array = reader.readtext(image_path, detail=0)
+#     return output_array[-1]
 
   
 def generate_excel_file(folder_path, file_name):
